@@ -18,7 +18,7 @@ if (!extension_loaded('openssl')) {
 	Tester\Environment::skip('Test requires php_openssl extension to be loaded.');
 }
 
-$connection = new BulkGate\Message\Connection(-1, md5('-1'), 'http://localhost/bulkgate/api/welcome');
+$connection = new BulkGate\Message\Connection(-1, md5('-1'), 'https://portal.bulkgate.com/api/welcome');
 
 $response = new BulkGate\Message\Response('{"message": "BulkGate API"}', 'application/json');
 
