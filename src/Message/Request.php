@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -26,13 +26,13 @@ class Request
     /** @var string */
     private $content_type;
 
-    public function __construct(string $action, array $data = array(), bool $compress = false)
+    public function __construct($action, array $data = [], $compress = false)
     {
-        $this->setAction($action);
+        $this->setAction((string) $action);
         $this->setData($data, $compress);
     }
 
-    public function setData(array $data = array(), bool $compress = false): self
+    public function setData(array $data = [], $compress = false)
     {
         $this->data = (array) $data;
         $this->content_type = $compress ? self::CONTENT_TYPE_ZIP : self::CONTENT_TYPE_JSON;
@@ -40,7 +40,7 @@ class Request
         return $this;
     }
 
-    public function setAction(string $action): self
+    public function setAction($action): self
     {
         $this->action = (string) $action;
 
@@ -66,17 +66,17 @@ class Request
         }
     }
 
-    public function getRawData(): array
+    public function getRawData()
     {
         return (array) $this->data;
     }
 
-    public function getAction(): string
+    public function getAction()
     {
         return (string) $this->action;
     }
 
-    public function getContentType(): string
+    public function getContentType()
     {
         return (string) $this->content_type;
     }

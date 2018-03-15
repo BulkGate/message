@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * Test: BulkGate\Message\Request
@@ -24,7 +24,7 @@ $test = function (BulkGate\Message\Response $response)
 
     Assert::exception(function () use ($response) {
         echo $response->undefined;
-    }, BulkGate\StrictException::class);
+    }, "BulkGate\\StrictException");
 };
 
 $test(new BulkGate\Message\Response(BulkGate\Utils\Json::encode($data), 'application/json'));

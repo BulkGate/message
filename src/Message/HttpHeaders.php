@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -21,18 +21,18 @@ class HttpHeaders
         $this->parseHeaders($raw_header);
     }
 
-    public function getHeader(string $name, ?string $default = null):? string
+    public function getHeader($name, $default = null)
     {
-        $name = strtolower($name);
+        $name = strtolower((string) $name);
 
         if(isset($this->headers[$name]))
         {
-            return $this->headers[$name];
+            return (string) $this->headers[$name];
         }
         return $default;
     }
 
-    public function getContentType(): string
+    public function getContentType()
     {
         $content_type = $this->getHeader('content-type');
 
@@ -48,12 +48,12 @@ class HttpHeaders
         return '';
     }
 
-    public function getHeaders(): array
+    public function getHeaders()
     {
         return (array) $this->headers;
     }
 
-    private function parseHeaders(string $raw_header): void
+    private function parseHeaders($raw_header)
     {
         if(!is_array($raw_header))
         {

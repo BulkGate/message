@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -38,7 +38,7 @@ class MessagePanel implements Tracy\IBarPanel
 	 * Renders tab.
 	 * @return string
 	 */
-	public function getTab(): string
+	public function getTab()
 	{
 		if (headers_sent() && !session_id()) {
 			return '';
@@ -73,7 +73,7 @@ class MessagePanel implements Tracy\IBarPanel
 	 * Renders panel.
 	 * @return string
 	 */
-	public function getPanel(): string
+	public function getPanel()
 	{
 		ob_start(function () {});
 
@@ -91,7 +91,7 @@ class MessagePanel implements Tracy\IBarPanel
      * @param int $status
      * @return bool
      */
-	public function status(int $status): bool
+	public function status($status)
     {
         return in_array($status, [1,11,111]);
     }

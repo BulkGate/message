@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -29,19 +29,19 @@ class MessageExtension extends Nette\DI\CompilerExtension
 		$config = $this->validateConfig($this->defaults);
 
 		$builder->addDefinition($this->prefix('connection'))
-            ->setAutowired(BulkGate\Message\IConnection::class)
-            ->setFactory(BulkGate\Message\Connection::class, [
+            ->setAutowired("BulkGate\\Message\\IConnection")
+            ->setFactory("BulkGate\\Message\\Connection", [
                 'application_id' => $config['application_id'],
                 'application_token' => $config['application_token'],
                 'api' => 'https://portal.bulkgate.com/api/'.$config['api_version'].'/'.$config['api_type'],
                 'application_product' => 'nette'
             ]);
 
-		if(class_exists(BulkGate\Sms\Sender::class))
+		if(class_exists("BulkGate\\Sms\\Sender"))
         {
             $builder->addDefinition($this->prefix('sender'))
-                ->setAutowired(BulkGate\Sms\ISender::class)
-                ->setFactory(BulkGate\Sms\Sender::class);
+                ->setAutowired("BulkGate\\Sms\\ISender")
+                ->setFactory("BulkGate\\Sms\\Sender");
         }
     }
 

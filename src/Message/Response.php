@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -8,7 +8,7 @@
 namespace BulkGate\Message;
 
 use BulkGate;
-use BulkGate\Utils\{Json, JsonException, Compress};
+use BulkGate\Utils\Json, BulkGate\Utils\JsonException, BulkGate\Utils\Compress;
 
 class Response extends \stdClass
 {
@@ -27,7 +27,7 @@ class Response extends \stdClass
      * @throws InvalidContentTypeException
      * @throws MalformedJsonException
      */
-    public function __construct(string $result, string $content_type)
+    public function __construct($result, $content_type)
     {
         try
         {

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -9,7 +9,7 @@ namespace BulkGate\Message;
 
 interface IConnection
 {
-    public function send(Request $request): Response;
+    public function send(Request $request);
 
-    public function getInfo(bool $delete = false): array;
+    public function getInfo($delete = false);
 }

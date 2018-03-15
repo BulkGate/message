@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
@@ -28,15 +28,15 @@ class Connection implements IConnection
     /** @var array Response */
     private $responses = [];
 
-    public function __construct(?int $application_id, ?string $application_token, string $api = 'https://portal.bulkgate.com/api/1.0/php-sdk', string $application_product = 'sdk')
+    public function __construct($application_id, $application_token, $api = 'https://portal.bulkgate.com/api/1.0/php-sdk', $application_product = 'sdk')
     {
-        $this->api = $api;
+        $this->api = (string) $api;
         $this->application_id = $application_id;
         $this->application_token = $application_token;
-        $this->application_product = $application_product;
+        $this->application_product = (string) $application_product;
     }
 
-    public function send(Request $request): Response
+    public function send(Request $request)
     {
         $context = stream_context_create(['http' => [
             'method' => 'POST',
@@ -69,7 +69,7 @@ class Connection implements IConnection
     }
 
 
-    public function getInfo(bool $delete = false): array
+    public function getInfo($delete = false)
     {
         $responses = $this->responses;
 
