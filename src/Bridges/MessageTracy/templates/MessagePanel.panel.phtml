@@ -93,11 +93,11 @@ use Tracy\Dumper;
                         <?php if($item->action === BulkGate\Sms\Message::TYPE): ?>
                         <tr>
                             <td><b>SMS</b></td>
-                            <td><b><?= $item->response->number ?? $item->request['message']->getPhoneNumber()->getPhoneNumber() ?></b></td>
+                            <td><b><?= isset($item->response->number) ? $item->response->number : $item->request['message']->getPhoneNumber()->getPhoneNumber() ?></b></td>
                             <td><?= $item->request['message']->getText() ?></td>
                             <td><?= $item->request['message']->getPhoneNumber()->getIso() ? $item->request['message']->getPhoneNumber()->getIso() : '-' ?></td>
-                            <td><?= $item->response->price ?? '-' ?></td>
-                            <td><?= $item->response->sms_id ?? '-' ?></td>
+                            <td><?= isset($item->response->price) ? $item->response->price : '-' ?></td>
+                            <td><?= isset($item->response->sms_id) ? $item->response->sms_id : '-' ?></td>
                             <td><?php if(isset($item->response->status) && $this->status($item->response->status)): ?> <span class="success">Sent</span><?php else: ?><span class="error">Error</span><?php endif; ?></td>
                         </tr>
                         <?php elseif ($item->action === BulkGate\Sms\BulkMessage::TYPE): ?>
@@ -107,7 +107,7 @@ use Tracy\Dumper;
                                     <td><b>SMS</b></td>
                                     <td><b><?= isset($item->response->response[$key]) ? $item->response->response[$key]['number'] : $message->getPhoneNumber()->getPhoneNumber() ?></b></td>
                                     <td><?= $message->getText() ?></td>
-                                    <td><?= $message->getPhoneNumber()->getIso() ?? '-' ?></td>
+                                    <td><?= $message->getPhoneNumber()->getIso() ?: '-' ?></td>
                                     <td><?= isset($item->response->response[$key]) ? $item->response->response[$key]['price'] : '-' ?></td>
                                     <td><?= isset($item->response->response[$key]) ? $item->response->response[$key]['sms_id'] : '-' ?></td>
                                     <td><?php if(isset($item->response->response[$key]) && $this->status($item->response->response[$key]['status'])): ?> <span class="success">Sent</span><?php else: ?><span class="error">Error</span><?php endif; ?></td>
