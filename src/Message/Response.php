@@ -58,6 +58,16 @@ class Response extends \stdClass
             throw new MalformedJsonException;
         }
     }
+    
+
+    /**
+     * @return bool
+     */
+    public function isSuccess(): bool
+    {
+        return empty($this->error);
+    }
+    
 
     /**
      * @param $name
@@ -71,6 +81,7 @@ class Response extends \stdClass
         }
         $this->strictGet($name);
     }
+    
 
     /**
      * @param $name
