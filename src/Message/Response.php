@@ -60,6 +60,15 @@ class Response extends \stdClass
     }
 
     /**
+     * @return bool
+     */
+    public function isSuccess()
+    {
+        return empty($this->error);
+    }
+    
+
+    /**
      * @param $name
      * @return mixed
      */
