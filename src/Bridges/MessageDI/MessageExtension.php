@@ -37,11 +37,11 @@ class MessageExtension extends Nette\DI\CompilerExtension
                 'application_product' => 'nette'
             ]);
 
-		if(class_exists(BulkGate\Sms\Sender::class))
+		if(class_exists('BulkGate\Sms\Sender'))
         {
             $builder->addDefinition($this->prefix('sender'))
-                ->setAutowired(BulkGate\Sms\ISender::class)
-                ->setFactory(BulkGate\Sms\Sender::class);
+                ->setAutowired('BulkGate\Sms\ISender')
+                ->setFactory('BulkGate\Sms\Sender');
         }
     }
 
