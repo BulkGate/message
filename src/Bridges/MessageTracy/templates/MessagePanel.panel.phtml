@@ -90,7 +90,7 @@ use Tracy\Dumper;
                             <th>ID</th>
                             <th>Status</th>
                         </tr>
-                        <?php if($item->action === BulkGate\Sms\Message::TYPE): ?>
+                        <?php if($item->action === 'transaction-sms'): ?>
                         <tr>
                             <td><b>SMS</b></td>
                             <td><b><?= $item->response->number ?? $item->request['message']->getPhoneNumber()->getPhoneNumber() ?></b></td>
@@ -100,7 +100,7 @@ use Tracy\Dumper;
                             <td><?= $item->response->sms_id ?? '-' ?></td>
                             <td><?php if(isset($item->response->status) && $this->status($item->response->status)): ?> <span class="success">Sent</span><?php else: ?><span class="error">Error</span><?php endif; ?></td>
                         </tr>
-                        <?php elseif ($item->action === BulkGate\Sms\BulkMessage::TYPE): ?>
+                        <?php elseif ($item->action === 'bulk-sms'): ?>
 
                             <?php foreach($item->request['message'] as $key => $message): ?>
                                 <tr>

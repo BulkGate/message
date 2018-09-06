@@ -52,10 +52,10 @@ class MessagePanel implements Tracy\IBarPanel
 
 		if (is_array($info) && count($info)) {
 			foreach ($info as $i) {
-				if ($i->action === BulkGate\Sms\Message::TYPE) {
+				if ($i->action === 'transaction-sms') {
 					$this->count++;
 
-				} elseif ($i->action === BulkGate\Sms\BulkMessage::TYPE) {
+				} elseif ($i->action === 'bulk-sms') {
 					$this->count += count($i->request['message']);
 				}
 			}
@@ -93,6 +93,6 @@ class MessagePanel implements Tracy\IBarPanel
      */
 	public function status(int $status): bool
     {
-        return in_array($status, [1,11,111]);
+        return in_array($status, ['sent', 'accepted', 'scheduled']);
     }
 }
