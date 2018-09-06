@@ -28,7 +28,7 @@ class Connection implements IConnection
     /** @var array Response */
     private $responses = [];
 
-    public function __construct(?int $application_id, ?string $application_token, string $api = 'https://portal.bulkgate.com/api/1.0/php-sdk', string $application_product = 'sdk')
+    public function __construct(?int $application_id, ?string $application_token, string $api = 'https://portal.bulkgate.com/api/1.0/php-sdk', string $application_product = 'php-sdk')
     {
         $this->api = $api;
         $this->application_id = $application_id;
