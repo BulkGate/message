@@ -79,7 +79,9 @@ class Response extends \stdClass
         {
             return $this->data[$name];
         }
+
         $this->strictGet($name);
+        return null;
     }
     
 
