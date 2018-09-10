@@ -14,11 +14,11 @@ use Tester\Assert;
 
 require __DIR__ . '/../bootstrap.php';
 
-$message = new class () implements BulkGate\Message\IMessage { public function __toString(): string { return ''; } public function getType(): string { return ''; } public function toArray(): array { return []; } public function schedule(?int $timestamp = null): void {} };
+$message = new class () implements BulkGate\Message\IMessage { public function __toString() { return ''; } public function getType() { return ''; } public function toArray() { return []; } public function schedule($timestamp = null) {} };
 
 $bulk = new class([$message, clone $message, clone $message, clone $message]) extends BulkGate\Utils\Iterator implements BulkGate\Message\IMessage
 {
-    public function __toString(): string { return ''; } public function getType(): string { return ''; } public function toArray(): array { return []; } public function schedule(?int $timestamp = null): void
+    public function __toString() { return ''; } public function getType() { return ''; } public function toArray() { return []; } public function schedule($timestamp = null)
     {
         global $output;
 
