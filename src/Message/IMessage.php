@@ -15,6 +15,8 @@ interface IMessage
 
     const PRICE = 'price';
 
+    const CREDIT = 'credit';
+
     const STATUS = 'status';
 
     const ID = 'id';

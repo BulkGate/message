@@ -1,11 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace BulkGate\Message;
-
 /**
  * @author Lukáš Piják 2018 TOPefekt s.r.o.
  * @link https://www.bulkgate.com/
  */
+
+
+namespace BulkGate\Message;
+
 use BulkGate;
 
 class Scheduler
