@@ -38,7 +38,7 @@ class Scheduler
         }
     }
 
-    public function datetime(\DateTime $datetime): self
+    public function datetime(\DateTime $datetime)
     {
         $this->datetime = $datetime;
 
