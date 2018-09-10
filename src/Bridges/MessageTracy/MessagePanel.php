@@ -88,10 +88,10 @@ class MessagePanel implements Tracy\IBarPanel
 
 
     /**
-     * @param int $status
+     * @param string $status
      * @return bool
      */
-	public function status(int $status): bool
+	public function status(string $status): bool
     {
         return in_array($status, ['sent', 'accepted', 'scheduled']);
     }
