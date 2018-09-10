@@ -24,3 +24,7 @@ class InvalidContentTypeException extends BulkGate\Exception
 class InvalidRequestException extends BulkGate\Exception
 {
 }
+
+class InvalidStateException extends BulkGate\Exception
+{
+}

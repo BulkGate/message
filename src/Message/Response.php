@@ -59,6 +59,7 @@ class Response extends \stdClass
         }
     }
 
+
     /**
      * @return bool
      */
@@ -78,8 +79,11 @@ class Response extends \stdClass
         {
             return $this->data[$name];
         }
+
         $this->strictGet($name);
+        return null;
     }
+    
 
     /**
      * @param $name
